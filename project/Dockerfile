@@ -16,7 +16,7 @@ RUN apt-get -y update && apt-get -y install \
 WORKDIR /etc/haproxy
 
 # Copy sources
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY /project/docker-entrypoint.sh /usr/local/bin/
 
 STOPSIGNAL SIGUSR1
 
