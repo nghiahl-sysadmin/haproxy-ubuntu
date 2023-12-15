@@ -1,6 +1,7 @@
 # How to use this image
 - Since no two users of HAProxy are likely to configure it exactly alike, this image does not come with any default configuration.
 - Please refer to https://docs.haproxy.org/ documentation on the subject of configuring HAProxy for your needs.
+- Docker repository https://hub.docker.com/r/nghiahl/haproxy
 ## Create a ```Dockerfile```
 ```
 FROM nghiahl/haproxy:v2.8.5
