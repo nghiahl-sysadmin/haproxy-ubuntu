@@ -55,4 +55,4 @@ jobs:
           file: ./project/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: nghiahl/haproxy:v2.8.5
+          tags: nghiahl/haproxy:latest
