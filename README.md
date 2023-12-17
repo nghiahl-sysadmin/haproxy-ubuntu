@@ -4,14 +4,14 @@
 - Docker repository https://hub.docker.com/r/nghiahl/haproxy
 ## Create a ```Dockerfile```
 ```
-FROM nghiahl/haproxy:v2.8.5
+FROM nghiahl/haproxy:ubuntu-v2.8.5
 COPY PATH/TO/CONFIG /etc/haproxy/haproxy.cfg
 ```
 ## Build the container
 ```
-$ docker build -t local/haproxy:v2.8.5 .
+$ docker build -t local/haproxy:ubuntu-v2.8.5 .
 ```
 ## Run the container
 ```
-$ docker run -d --name haproxy local/haproxy:v2.8.5
+$ docker run -d --name haproxy local/haproxy:ubuntu-v2.8.5
 ```
