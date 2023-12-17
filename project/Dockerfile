@@ -23,22 +23,22 @@ RUN set -eux; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \
 	apt-get update && apt-get install -y --no-install-recommends \
-		ca-certificates \
-		gcc \
-		libc6-dev \
-		liblua5.3-dev \
-		libpcre2-dev \
-		libssl-dev \
-		make \
-		curl \
+	ca-certificates \
+	gcc \
+	libc6-dev \
+	liblua5.3-dev \
+	libpcre2-dev \
+	libssl-dev \
+	make \
+	curl \
 	; \
 	rm -rf /var/lib/apt/lists/*; \
 	\
-    curl -o haproxy.tar.gz -SL "$HAPROXY_URL";
-	echo "$HAPROXY_SHA256 *haproxy.tar.gz" | sha256sum -c; \
+	curl -o /opt/haproxy.tar.gz -SL "$HAPROXY_URL"; \
+	echo "$HAPROXY_SHA256 /opt/haproxy.tar.gz" | sha256sum -c; \
 	mkdir -p /usr/src/haproxy; \
-	tar -xzf haproxy.tar.gz -C /usr/src/haproxy --strip-components=1; \
-	rm haproxy.tar.gz; \
+	tar -xzf /opt/haproxy.tar.gz -C /usr/src/haproxy --strip-components=1; \
+	rm /opt/haproxy.tar.gz; \
 	\
 	makeOpts=' \
 		TARGET=linux-glibc \
@@ -51,7 +51,7 @@ RUN set -eux; \
 		EXTRA_OBJS=" \
 		" \
 	'; \
- 	dpkgArch="$(dpkg --print-architecture)"; \
+	dpkgArch="$(dpkg --print-architecture)"; \
 	case "$dpkgArch" in \
 		armel) makeOpts="$makeOpts ADDLIB=-latomic" ;; \
 	esac; \
@@ -74,9 +74,9 @@ RUN set -eux; \
 		| sort -u \
 		| xargs -r apt-mark manual \
 	; \
-    apt-mark hold \
-    curl \
-    ; \
+	apt-mark hold \
+	curl \
+	; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
  
 WORKDIR /etc/haproxy
