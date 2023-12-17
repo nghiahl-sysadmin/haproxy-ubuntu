@@ -22,7 +22,8 @@ RUN set -eux; \
 RUN set -eux; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \
-	apt-get update && apt-get install -y --no-install-recommends \
+	apt-get update; \
+ 	DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 	ca-certificates \
 	gcc \
 	libc6-dev \
