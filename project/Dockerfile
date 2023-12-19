@@ -10,14 +10,12 @@ RUN set -eux; \
 	groupadd --gid 99 --system haproxy; \
 	useradd \
 		--gid haproxy \
-		--home-dir /var/lib/haproxy \
-		--no-create-home \
 		--system \
 		--uid 99 \
 		haproxy \
 	; \
 	mkdir /var/lib/haproxy; \
-	chown haproxy:haproxy /var/lib/haproxy
+	chown haproxy:haproxy /etc/haproxy
 
 RUN set -eux; \
 	\
