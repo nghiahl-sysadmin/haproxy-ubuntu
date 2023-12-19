@@ -15,7 +15,7 @@ RUN set -eux; \
 		haproxy \
 	; \
 	mkdir /var/lib/haproxy; \
-	chown haproxy:haproxy /etc/haproxy
+	chown -R haproxy:haproxy /etc/haproxy
 
 RUN set -eux; \
 	\
